@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coolness Test</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: #ffffff; color: #000000;
+    width: 100vw; height: 100vh; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .screen {
+    display: none; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; width: 100%; height: 100%; padding: 2rem;
+  }
+  .screen.active { display: flex; }
+  h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; margin-bottom: 1.5rem; line-height: 1.2; }
+  .btn-group { display: flex; gap: 0; flex-wrap: wrap; justify-content: center; }
+  .btn {
+    padding: 1rem 3rem; border: 3px solid #000000; border-radius: 100px;
+    font-size: 1rem; font-weight: 400; cursor: pointer;
+    transition: transform 0.1s ease; min-width: 140px;
+    font-family: inherit; outline: none;
+  }
+  .btn:active { transform: scale(0.95); }
+  .btn-yes { background: #00c853; color: #000000; border-right-width: 1.5px; }
+  .btn-no { background: #ff3333; color: #000000; border-left-width: 1.5px; }
+  .result-text { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; }
+</style>
+</head>
+<body>
+  <div class="screen active" id="screen-1">
+    <h1>would you call me cool</h1>
+    <div class="btn-group">
+      <button class="btn btn-yes" onclick="nextScreen(2)">yes</button>
+      <button class="btn btn-no" onclick="goToBribe()">no</button>
+    </div>
+  </div>
+  <div class="screen" id="screen-2">
+    <h1>would you call me cool in day</h1>
+    <div class="btn-group">
+      <button class="btn btn-yes" onclick="nextScreen(3)">yes</button>
+      <button class="btn btn-no" onclick="goToBribe()">no</button>
+    </div>
+  </div>
+  <div class="screen" id="screen-3">
+    <h1>would you call me cool in month</h1>
+    <div class="btn-group">
+      <button class="btn btn-yes" onclick="nextScreen(4)">yes</button>
+      <button class="btn btn-no" onclick="goToBribe()">no</button>
+    </div>
+  </div>
+  <div class="screen" id="screen-4">
+    <h1>would you call me cool in year</h1>
+    <div class="btn-group">
+      <button class="btn btn-yes" onclick="nextScreen(5)">yes</button>
+      <button class="btn btn-no" onclick="goToBribe()">no</button>
+    </div>
+  </div>
+  <div class="screen" id="screen-5">
+    <h1>would you call me cool in decade</h1>
+    <div class="btn-group">
+      <button class="btn btn-yes" onclick="showWin()">yes</button>
+      <button class="btn btn-no" onclick="goToBribe()">no</button>
+    </div>
+  </div>
+  <div class="screen" id="screen-6">
+    <h1 class="result-text">u coolest thx</h1>
+  </div>
+  <div class="screen" id="screen-7">
+    <h1>if you say me cool I will trade caprisun</h1>
+    <div class="btn-group">
+      <button class="btn btn-yes" onclick="showWin()">yes</button>
+      <button class="btn btn-no" onclick="showLose()">no</button>
+    </div>
+  </div>
+  <div class="screen" id="screen-8">
+    <h1 class="result-text">u not cool</h1>
+  </div>
+<script>
+  function showScreen(n) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('screen-' + n).classList.add('active');
+  }
+  function nextScreen(n) { showScreen(n); }
+  function showWin() { showScreen(6); }
+  function showLose() { showScreen(8); }
+  function goToBribe() { showScreen(7); }
+</script>
+</body>
+</html>
